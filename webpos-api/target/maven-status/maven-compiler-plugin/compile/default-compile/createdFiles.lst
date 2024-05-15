@@ -1,0 +1,10 @@
+com\example\webpos\rest\api\CounterApi.class
+com\example\webpos\rest\api\ProductsApi.class
+com\example\webpos\rest\dto\OrderDto.class
+com\example\webpos\rest\api\OrdersApi.class
+com\example\webpos\rest\dto\ErrorDto.class
+com\example\webpos\rest\dto\ItemDto.class
+com\example\webpos\rest\dto\CartDto.class
+com\example\webpos\rest\dto\ProductDto.class
+com\example\webpos\rest\api\ApiUtil.class
+com\example\webpos\rest\api\CartsApi.class

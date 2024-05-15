@@ -1,0 +1,13 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/com/example/webpos/rest/api/ApiUtil.java
+src/main/java/com/example/webpos/rest/api/CartsApi.java
+src/main/java/com/example/webpos/rest/api/CounterApi.java
+src/main/java/com/example/webpos/rest/api/OrdersApi.java
+src/main/java/com/example/webpos/rest/api/ProductsApi.java
+src/main/java/com/example/webpos/rest/dto/CartDto.java
+src/main/java/com/example/webpos/rest/dto/ErrorDto.java
+src/main/java/com/example/webpos/rest/dto/ItemDto.java
+src/main/java/com/example/webpos/rest/dto/OrderDto.java
+src/main/java/com/example/webpos/rest/dto/ProductDto.java
