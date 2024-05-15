@@ -1,12 +1,11 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/IMEm063v)
-# Micro WebPoS 
+# aw06
+我的webpos项目中共有4个微服务webpos-carts、webpos-products、webpos-counter和webpos-orders，分别表示购物车服务、商品服务、柜台服务和订单服务。除了这4个微服务外，还有用于服务注册发现的webpos-discovery-server以及API网关webpos-api-gateway。
 
+启动顺序：先启动webpos-discovery-server，再启动API网关以及4个微服务。
 
-请参考spring-petclinic-rest/spring-petclinic-microserivces 将webpos项目改为微服务架构，具体要求包括：
-1. 至少包含独立的产品管理服务、订单管理服务以及discovery/gateway等微服务架构下需要的基础设施服务；
-2. 请将系统内的不同微服务实现不同的计算复杂度，通过压力测试实验验证对单个微服务进行水平扩展（而无需整个系统所有服务都进行水平扩展）可以提升系统性能，请给出实验报告；
-3. 请使用`RestTemplate`进行服务间访问，验证Client-side LB可行；
-4. 请注意使用断路器等机制；
-5. 如有兴趣可在kubernetes或者minikube上进行部署。
-
-请编写readme对自己的系统和实验进行详细介绍。
+对4个微服务的介绍：
+1. webpos-carts提供了查看所有购物车、根据购物车Id查看某一个购物车、创建一个购物车、查看某个购物车中物品的价格总和、向购物车中添加物品、从购物车中删除物品和对某个购物车进行结账这几个服务。
+2. webpos-products提供了查看所有商品和根据商品Id查看某一个商品这两个服务。
+3. webpos-counter提供了计算一个购物车中物品的价格总和的服务。当向webpos-carts发送查看某个购物车中物品的价格总和的服务请求时，webpos-carts会向webpos-counter发送服务请求，由webpos-counter计算出购物车中物品的价格总和这一结果，并将结果返回给webpos-carts。
+4. webpos-orders提供了生成订单、查看所有订单和根据订单Id查看某一个订单这三个服务。当向webpos-carts发送对某个购物车进行结账的服务请求时，webpos-carts会向webpos-orders发送服务请求，由webpos-orders生成相应的订单，并将订单返回给webpos-carts。
+5. webpos-carts在向webpos-counter和webpos-orders发送服务请求时，使用了RestTemplate进行负载均衡和断路器CircuitBreaker，具体代码可见webpos-carts/src/main/java/com/example/carts/service/CartServiceImp.java中的getCartTotal函数和checkout函数。
